@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEDEK</title>
+    <link rel="stylesheet" href="pokedek.css">
+</head>
+<body>
+    <div class="container">
+        <form id="poke-form">
+
+            <div class="form-up">
+                <input type="text" placeholder="Search Pokemon Name" id="pokemon-name">
+                <h2 class="title" id="title">Pikachu</h2>
+            </div>
+
+            <div class="form-down">
+                <div class="left">
+                    <p>NAME</p>
+                    <p id="name">_</p>
+                    <p>TYPE</p>
+                    <p id="type">_</p>
+                </div>
+                <div class="right">
+                    <p>HEIGHT</p>
+                    <p id="height">_</p>
+                    <p>WEIGHT</p>
+                    <p id="weight">_</p>
+                    <p>BIO</p>
+                    <p id="bio">_</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        const API_KEY = '4269652c5e1b6a66a34f9d3d16ecc098';
+        const DEFAULT_VALUE = '--';
+        const pokemonName = document.getElementById("pokemon-name");
+        const title = document.getElementById("title");
+        const name = document.getElementById("name");
+        const type = document.getElementById("type");
+        const height = document.getElementById("height");
+        const weight = document.getElementById("weight");
+        const bio = document.getElementById("bio");
+        const formPokemon = document.getElementById("poke-form")
+        formPokemon.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const API_URL = `https://pokeapi.co/api/v2/pokemon/${name}`
+            fetch(API_URL)
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        })
+
+    </script>
+</body>
+</html>
